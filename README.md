@@ -1,13 +1,16 @@
 STEP 1 - install python3 + SDK + google-auth-oauthlib
 ------------------------
 
+```
 brew install python3
 pip3 install --upgrade google-assistant-sdk
-
+```
 
 deps
 
 ```
+pip3 list
+
 cachetools (2.0.1)
 certifi (2017.7.27.1)
 chardet (3.0.4)
@@ -29,7 +32,7 @@ urllib3 (1.22)
 wheel (0.29.0)
 ```
 
-STEP 2 - [create nlu api client OAuth key](https://developers.google.com/assistant/sdk/develop/grpc/config-dev-project-and-account
+STEP 2 - [create nlu api client OAuth key](https://developers.google.com/assistant/sdk/develop/grpc/config-dev-project-and-account)
 ------
 
 - goto https://console.cloud.google.com
@@ -39,12 +42,13 @@ STEP 2 - [create nlu api client OAuth key](https://developers.google.com/assista
 - goto https://console.cloud.google.com/apis/dashboard and enable NLU assistantAPI
 - goto https://console.developers.google.com/apis/credentials and create OAuth client key
 
-STEP 3 - audio test 
--------
-
 ```
 google-oauthlib-tool --client-secrets ~/Downloads/client_secret_435129512078-dc2b7u2nttij3rsk8ctktntdcl3k8ocb.apps.googleusercontent.com.json --scope https://www.googleapis.com/auth/assistant-sdk-prototype --save --headless
 ```
+
+STEP 3 - audio test 
+-------
+
 
 ```
 $ openssl version
