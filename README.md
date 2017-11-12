@@ -126,3 +126,5 @@ References
 ----------
 
 https://github.com/zyx-machine/assistant-sdk-python/tree/master/google-assistant-sdk
+
+https://medium.com/@druchtie/build-google-assistant-on-macos-903ac906dc01
