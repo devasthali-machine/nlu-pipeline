@@ -1,0 +1,25 @@
+{
+  "actions": [
+    {
+      "description": "Mental Monkey",
+      "name": "MAIN",
+      "fulfillment": {
+        "conversationName": "mental-monkey"
+      },
+      "intent": {
+        "name": "actions.intent.MAIN",
+        "trigger": {
+          "queryPatterns": [
+            "hi how are you?"
+          ]
+        }
+      }
+    }
+  ],
+  "conversations": {
+    "mental-monkey": {
+      "name": "mental-monkey",
+      "url": "whatever"
+    }
+  }
+}
