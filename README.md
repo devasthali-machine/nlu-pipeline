@@ -5,14 +5,14 @@ architecture
 
 ```
 
-|-------------------------------------------------------------------
-|              |                     |                             |
-| middleware   | nlu agent           |  fulfillment api - intent 1 |
-|              | contexts -> intents |  intent -> fulfillment data |
-|              |                     |                             |
-|              |                     |                             |
-|              |                     |  fulfillment api - intent 2 |
-|-------------------------------------------------------------------
+|------------------------------------------------------------------------------------------
+|              |                                            |                             |
+| middleware   | [nlu agent](nlu-agent/README.md)           |  fulfillment api - intent 1 |
+|              | contexts -> intents                        |  intent -> fulfillment data |
+|              |                                            |                             |
+|              |                                            |                             |
+|              |                                            |  fulfillment api - intent 2 |
+|------------------------------------------------------------------------------------------
 
 ```
 
