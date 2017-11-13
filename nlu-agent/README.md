@@ -29,13 +29,14 @@ gactions init
 ```
 
 
-gactions update --action_package PACKAGE_NAME --project zxx-nlu-assistant
+gactions update --action_package PACKAGE_NAME --project customer-support-nlu-assistant
 
 
 NLU agent
 ---------
 
 **1) login https://console.dialogflow.com/api-client/#/login**
+
 **2) create NLU agent that takes userQuery and fulfills the user intent.**
 
 populate data:
@@ -119,14 +120,19 @@ $ curl 'https://api.dialogflow.com/v1/query?v=20170712&query=please%20tell%20me%
 
 **6) add office.hours intent**
 
-context: "office hours", "office-hours"
-intent-action-name: office.hours
-text-response: Here are office hours;
-custome payload:
+- context: "office hours", "office-hours"
+- intent-action-name: office.hours
+- text-response: Here are office hours;
+- custome payload:
+
+```
 {
   "Sun": "10AM-4PM",
   "Mon": "10AM-4PM"
 }
+```
+
+office hours context example
 
 ```
 curl 'https://api.dialogflow.com/v1/query?v=20170712&query=what%20are%20office%20hours&lang=en&sessionId=aff7e0a6-7747-4318-8425-fff029750767&timezone=America/Los_Angeles' -H 'Authorization:Bearer client_access_token'
@@ -187,7 +193,8 @@ to nlu-agent
 - save the changes
 - goto context intents and enable "Use fulfillment-hook" and "Use fulfillment-hook for slot-filling", save the changes
 
-now test sending query to nlu-agent which will trigger fulfillment-hook and respond back
+
+**now test sending query to nlu-agent which will trigger fulfillment-hook and respond back**
 
 ```
 curl 'https://api.dialogflow.com/v1/query?v=20170712&query=Transportation%20rules&lang=en&sessionId=aff7e0a6-7747-4318-8425-fff029750767&timezone=America/Los_Angeles' -H 'Authorization:Bearer client_access_token'
@@ -229,7 +236,7 @@ curl 'https://api.dialogflow.com/v1/query?v=20170712&query=Transportation%20rule
 }
 ```
 
-Request to fulfillment-hook looks as;
+**Request to fulfillment-hook looks as;**
 
 ```
 {
