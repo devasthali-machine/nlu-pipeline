@@ -7,7 +7,7 @@ architecture
 
 |------------------------------------------------------------------------------------------
 |              |                                            |                             |
-| middleware   | [nlu agent](nlu-agent/README.md)           |  fulfillment api - intent 1 |
+| middleware   | [nlu agent](nlu-agent/README.md)           |  [fulfillment api - intent 1](fulfillment-api/README.md) |
 |              | contexts -> intents                        |  intent -> fulfillment data |
 |              |                                            |                             |
 |              |                                            |                             |
