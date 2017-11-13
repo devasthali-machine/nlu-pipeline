@@ -4,12 +4,16 @@ architecture
 
 
 ```
-|--------------------------------------------------
-|              |            |
-| middleware   | nlu agent  |  fulfillment api
-|              |            |
-|              |            |
-|---------------------------------------------------
+
+|-------------------------------------------------------------------
+|              |                     |                             |
+| middleware   | nlu agent           |  fulfillment api - intent 1 |
+|              | contexts -> intents |  intent -> fulfillment data |
+|              |                     |                             |
+|              |                     |                             |
+|              |                     |  fulfillment api - intent 2 |
+|-------------------------------------------------------------------
+
 ```
 
 
