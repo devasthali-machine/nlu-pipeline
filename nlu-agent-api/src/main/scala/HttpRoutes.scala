@@ -3,7 +3,7 @@
 import java.time.LocalDateTime
 import java.util.UUID
 
-import Models._
+import Data._
 import akka.actor.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.server.Directives._
@@ -19,19 +19,19 @@ trait HttpRoutes {
   implicit val system: ActorSystem
   implicit val materializer: ActorMaterializer
 
-  import Models.ServiceJsonProtoocol._
+  import Data.ServiceJsonProtoocol._
 
   val route =
     path("auth") {
       post {
-        entity(as[AuthRequest]) {
+        entity(as[Auth.Request]) {
           event =>
             complete {
-              AuthResponse(
+              Auth.Response(
                 conversationID = UUID.randomUUID().toString,
                 correlationID = Some(event.correlationID),
                 msgTimestamp = Some(LocalDateTime.now()),
-                passthrough = Some(Metadata[String](
+                passthrough = Some(Auth.Metadata[String](
                   contents = "welcome to nlu",
                   chatbotVersion = "1.0",
                   clientChannel = "channel",
@@ -44,10 +44,13 @@ trait HttpRoutes {
         }
       }
     } ~
-      path("message") {
-        get {
-          complete {
-            "hello"
+      path("conversation") {
+        post {
+          entity(as[Conversation.Request[String]]) {
+            event =>
+              complete {
+                "hello"
+              }
           }
         }
       }
