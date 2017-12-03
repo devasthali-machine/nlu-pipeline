@@ -8,7 +8,7 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
-import events.EventHandler
+import events.UtteranceHandler
 
 /**
   * Created by prayagupd
@@ -57,7 +57,7 @@ trait HttpRoutes {
       } ~
       path("chat") {
         get {
-          handleWebSocketMessages(EventHandler.handle)
+          handleWebSocketMessages(UtteranceHandler.handle)
         }
       }
 }
