@@ -30,7 +30,7 @@ class LemmatizationProcessor extends Nlu {
         sentence.get(classOf[TokensAnnotation]).asScala.map { token =>
           val word = token.get(classOf[TextAnnotation])
           val lemma = token.get(classOf[LemmaAnnotation])
-          System.out.println("lemmatized version :" + lemma)
+          println("lemmatized version :" + lemma)
           lemma
         }
       }

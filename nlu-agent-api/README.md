@@ -23,7 +23,26 @@ TODOs
 
 - websocket supported nlu-agent
 - docker deployment
+-
 
+```
+curl -i \
+     --no-buffer \
+     -H "Connection: Upgrade" \
+     -H "Upgrade: websocket" \
+     -H "Host: localhost:9191" \
+     -H "Origin: http://localhost:9191" \
+     -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" \
+     -H "Sec-WebSocket-Version: 13" localhost:9191/chat
+
+HTTP/1.1 400 Bad Request
+Server: akka-http/10.0.10
+Date: Mon, 04 Dec 2017 08:48:19 GMT
+Content-Type: text/plain; charset=UTF-8
+Content-Length: 34
+
+Expected WebSocket Upgrade request
+```
 
 references
 ----------
@@ -44,4 +63,11 @@ related forms of a word to a common base form. For instance:
 
 am, are, is => be
 car, cars, car's, cars' => car
+```
+
+http://snowballstem.org/
+
+```
+a small string processing language designed for creating
+stemming algorithms for use in Information Retrieval
 ```
