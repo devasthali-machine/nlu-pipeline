@@ -51,9 +51,7 @@ https://docs.lexigram.io/v1/lexigraph/getConcept
 
 http://demo.lexigram.io/#!/
 
-
-Readings
---------
+https://medium.com/@brijrajsingh/chat-bots-designing-intents-and-entities-for-your-nlp-models-35c385b7730d
 
 https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html
 
