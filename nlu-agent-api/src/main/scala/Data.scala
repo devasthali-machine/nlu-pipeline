@@ -5,7 +5,7 @@ import java.util.UUID
 
 import Data.Auth.Metadata
 import Data.Conversation.Fulfillment
-import spray.json.{DefaultJsonProtocol, DeserializationException, JsString, JsValue, JsonFormat}
+import spray.json.{DefaultJsonProtocol, DeserializationException, JsString, JsValue, JsonFormat, RootJsonFormat}
 
 /**
   * Created by prayagupd
@@ -17,10 +17,10 @@ object Data {
   implicit object UUIDFormat extends JsonFormat[UUID] {
     def write(uuid: UUID) = JsString(uuid.toString)
 
-    def read(value: JsValue) = {
+    def read(value: JsValue): UUID = {
       value match {
         case JsString(uuid) => UUID.fromString(uuid)
-        case _ => throw new DeserializationException("Expected hexadecimal UUID string")
+        case _ => throw DeserializationException("Expected hexadecimal UUID string")
       }
     }
   }
@@ -28,10 +28,10 @@ object Data {
   implicit object LocalDateFormat extends JsonFormat[LocalDateTime] {
     def write(ld: LocalDateTime) = JsString(ld.toString)
 
-    def read(value: JsValue) = {
+    def read(value: JsValue): LocalDateTime = {
       value match {
         case JsString(time) => LocalDateTime.parse(time)
-        case _ => throw new DeserializationException("wrong local date")
+        case _ => throw DeserializationException("wrong local date")
       }
     }
   }
@@ -91,16 +91,16 @@ object Data {
   case class Acknowledge(status: String)
 
   object ServiceJsonProtoocol extends DefaultJsonProtocol {
-    implicit val applicationStarted = jsonFormat1(ApplicationStarted)
-    implicit val metadata1 = jsonFormat5(Auth.Metadata[String])
-    implicit val authRequest = jsonFormat6(Auth.Request)
-    implicit val authResponse = jsonFormat5(Auth.Response)
+    implicit val applicationStarted: RootJsonFormat[ApplicationStarted] = jsonFormat1(ApplicationStarted)
+    implicit val metadata1: RootJsonFormat[Metadata[String]] = jsonFormat5(Auth.Metadata[String])
+    implicit val authRequest: RootJsonFormat[Auth.Request] = jsonFormat6(Auth.Request)
+    implicit val authResponse: RootJsonFormat[Auth.Response] = jsonFormat5(Auth.Response)
 
-    implicit val ship = jsonFormat1(Conversation.ShippingAddress)
-    implicit val detail = jsonFormat1(Conversation.OrderItemDetail)
-    implicit val fulfillment = jsonFormat6(Conversation.Fulfillment)
-    implicit val convRequest = jsonFormat11(Conversation.Request[String])
-    implicit val ack = jsonFormat1(Acknowledge)
+    implicit val ship: RootJsonFormat[Conversation.ShippingAddress] = jsonFormat1(Conversation.ShippingAddress)
+    implicit val detail: RootJsonFormat[Conversation.OrderItemDetail] = jsonFormat1(Conversation.OrderItemDetail)
+    implicit val fulfillment: RootJsonFormat[Fulfillment] = jsonFormat6(Conversation.Fulfillment)
+    implicit val convRequest: RootJsonFormat[Conversation.Request[String]] = jsonFormat11(Conversation.Request[String])
+    implicit val ack: RootJsonFormat[Acknowledge] = jsonFormat1(Acknowledge)
   }
 
 }

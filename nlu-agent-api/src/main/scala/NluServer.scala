@@ -21,8 +21,8 @@ object NluServer {
 
   def main(args: Array[String]) {
 
-    implicit val nluSystem = ActorSystem("nlu-api-system")
-    implicit val actorExecutor = ActorMaterializer()
+    implicit val nluSystem: ActorSystem = ActorSystem("nlu-api-system")
+    implicit val actorExecutor: ActorMaterializer = ActorMaterializer()
 
     new NluServer().startServer("localhost", 9191)
   }

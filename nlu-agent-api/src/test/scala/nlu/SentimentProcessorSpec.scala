@@ -1,12 +1,12 @@
 package nlu
 
-import akka.actor.{ActorSystem, Props}
+import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.testkit.{TestKit, TestProbe}
 import org.scalatest.{FunSuiteLike, Matchers}
 
 class SentimentProcessorSpec extends TestKit(ActorSystem("nlu-event-system")) with FunSuiteLike with Matchers {
 
-  val nlu = system.actorOf(Props[SentimentProcessor], "sentiment-processor")
+  val nlu: ActorRef = system.actorOf(Props[SentimentProcessor], "sentiment-processor")
   val verifyMailBox = TestProbe()
 
   test("processes nlu query") {

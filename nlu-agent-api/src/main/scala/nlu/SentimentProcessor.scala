@@ -5,9 +5,10 @@ import java.util.Properties
 import edu.stanford.nlp.ling.CoreAnnotations
 import edu.stanford.nlp.pipeline._
 import edu.stanford.nlp.sentiment.SentimentCoreAnnotations
-import nlu.Nlu.Utterance
+import nlu.Nlu.{ActionResult, Utterance}
 
 import scala.collection.JavaConverters._
+import scala.collection.mutable
 
 class SentimentProcessor extends Nlu {
 
@@ -24,8 +25,8 @@ class SentimentProcessor extends Nlu {
       val annotation = nlp.process(event)
       val sentences = annotation.get(classOf[CoreAnnotations.SentencesAnnotation])
 
-      val sentiments = sentences.asScala.map { sentence =>
-        val sentiment = sentence.get(classOf[SentimentCoreAnnotations.SentimentClass])
+      val sentiments: mutable.Seq[ActionResult] = sentences.asScala.map { sentence =>
+        val sentiment: ActionResult = sentence.get(classOf[SentimentCoreAnnotations.SentimentClass])
         sentiment
       }
 

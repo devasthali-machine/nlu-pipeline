@@ -16,6 +16,16 @@ object Nlu {
 
 trait Nlu extends Actor
 
+/**
+  * https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html
+  *
+  * The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally
+  * related forms of a word to a common base form. For instance:
+  *
+  * am, are, is -> be
+  * car, cars, car's, cars' -> car
+  */
+
 class LemmatizationProcessor extends Nlu {
 
   val props = new Properties()

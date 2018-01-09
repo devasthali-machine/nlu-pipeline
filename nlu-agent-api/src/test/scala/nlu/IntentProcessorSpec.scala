@@ -1,6 +1,6 @@
 package nlu
 
-import akka.actor.{ActorSystem, Props}
+import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.testkit.{TestKit, TestProbe}
 import org.scalatest.{FunSuiteLike, Matchers}
 
@@ -9,7 +9,7 @@ import scala.language.postfixOps
 
 class IntentProcessorSpec extends TestKit(ActorSystem("nlu-event-system")) with FunSuiteLike with Matchers {
 
-  val intentCreator = system.actorOf(Props[IntentProcessor], "intent-creator")
+  val intentCreator: ActorRef = system.actorOf(Props[IntentProcessor], "intent-creator")
   val mailbox = TestProbe()
 
   test("creates tags") {
@@ -18,10 +18,10 @@ class IntentProcessorSpec extends TestKit(ActorSystem("nlu-event-system")) with 
 
     within(5 seconds) {
       mailbox.expectMsg(Seq(Seq(
-        "I" -> "PRP",
-        "'m" -> "VBP",
-        "having" -> "VBG",
-        "headache" -> "NN",
+        "I" -> "PRP", //Personal ProNoun
+        "'m" -> "VBP", // Verb, non-3rd person singular present
+        "having" -> "VBG", // Verb, gerund or present participle
+        "headache" -> "NN", // Noun, singular or mass
         "." -> ".")))
     }
   }
