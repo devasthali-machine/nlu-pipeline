@@ -2,6 +2,10 @@ package nlu
 
 object App extends App {
 
+  println("=======================================")
+  println("usage:: *.jar nlu-agent utterance creds-file")
+  println("=======================================")
+
   val req = Map(
     "nlu-agent" -> args(0),
     "utterance" -> args(1),
