@@ -2,9 +2,14 @@ package nlu
 
 object App extends App {
 
-  println("##################################################")
-  println("#  usage:: *.jar nlu-agent utterance creds-file  #")
-  println("##################################################")
+  println("#############################################################################")
+  println("#  usage:: java -jar nlu-intent-toolkit.jar nlu-agent utterance creds-file  #")
+  println("#############################################################################")
+
+
+  println("---------------------------------------------------")
+  println(System.getenv())
+  println("---------------------------------------------------")
 
   val req = Map(
     "nlu-agent" -> args(0),
