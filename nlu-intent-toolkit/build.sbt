@@ -12,10 +12,10 @@ libraryDependencies += "com.google.cloud" % "google-cloud-logging-logback" % "0.
 libraryDependencies += "kr.motd.maven" % "os-maven-plugin" % "1.5.0.Final"
 
 //https://github.com/grpc/grpc-java/blob/master/SECURITY.md
-//libraryDependencies += "io.netty" % "netty-tcnative-boringssl-static" % "2.0.0.Final"
-//java.lang.RuntimeException: deduplicate: different file contents found in the following:
-//  /Users/a1353612/.ivy2/cache/io.grpc/grpc-netty-shaded/jars/grpc-netty-shaded-1.9.0.jar:META-INF/io.netty.versions.properties
-///Users/a1353612/.ivy2/cache/io.netty/netty-tcnative-boringssl-static/jars/netty-tcnative-boringssl-static-2.0.0.Final.jar:META-INF/io.netty.versions.properties
+libraryDependencies += "io.netty" % "netty-tcnative-boringssl-static" % "2.0.7.Final"
+
+//
+libraryDependencies += "org.mortbay.jetty.alpn" % "jetty-alpn-agent" % "2.0.7"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test
 

@@ -4,6 +4,7 @@ import java.io.{BufferedInputStream, FileInputStream}
 import java.util.UUID
 
 import com.google.api.gax.core.FixedCredentialsProvider
+import com.google.api.gax.grpc.InstantiatingGrpcChannelProvider
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.cloud.dialogflow.v2beta1._
 
@@ -17,7 +18,11 @@ object IntentIdentifier {
 
     val credentials = FixedCredentialsProvider.create(GoogleCredentials.fromStream(credsStream))
 
-    val sessionsClient = Some(SessionsClient.create(SessionsSettings.newBuilder().setCredentialsProvider(credentials).build()))
+    val sessionsClient = Some(SessionsClient.create(SessionsSettings.newBuilder()
+      .setEndpoint("dialogflow.googleapis.com:443")
+      .setTransportChannelProvider(InstantiatingGrpcChannelProvider.newBuilder().build())
+      .setCredentialsProvider(credentials)
+      .build()))
 
     Try {
       val resp = sessionsClient.map { session =>
